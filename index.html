@@ -24,37 +24,22 @@
 
 <body>
     <!--    NAVBAR     -->
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar sticky-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./img/logo.png" alt="Logo" width="52" height="52"
-                    class="d-inline-block align-text-center"> Sabores Argentinos.
-            </a>
+            <a class="navbar-brand" href="#" style="color: white;">
+              <img src="./img/icon.png" alt="Logo" width="52" height="52"
+                    class="d-inline-block align-text-center"> Sabores Argentinos.</a>
 
             <button class="btn btn-outline-warning" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#Side_carrito" aria-controls="offcanvasRight"><i
-                    class="fa-solid fa-cart-shopping"></i></button>
+                    class="fa-solid fa-cart-shopping"></i> Carrito</button>
             <!--    OFFCANVAS  -->
             <div class="offcanvas offcanvas-end" tabindex="-1" id="Side_carrito" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body" id="container-cart">
-                    <!--div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                          <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
-                          </div>
-                          <div class="col-md-8">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                          </div>
-                        </div>
-                    </div-->
+                <div class="offcanvas-body" id="container_cart">
                 </div>
             </div>
         </div>
