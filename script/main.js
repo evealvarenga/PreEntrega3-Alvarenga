@@ -95,7 +95,6 @@ class shoppingControl{
             localStorage.setItem("shopList", JSON.stringify(this.shopList))
         }
         this.show(container_cart)
-        return i
     } 
 
     decrease(ID){
@@ -119,12 +118,14 @@ class shoppingControl{
         this.shopList.splice(index,1);
         localStorage.setItem("shopList", JSON.stringify(this.shopList));
         this.show(container_cart)
+        this.total();
     }
 
     cleaner(){
         this.shopList.length = 0;
         container_cart.innerHTML = ""
         localStorage.clear();
+        this.total();
     }
 
     total(){
@@ -133,8 +134,7 @@ class shoppingControl{
         this.shopList.forEach((product) => {
             total += product.Precio * product.Cantidad;
         })
-        console.log(total)
-        document.getElementById("total").innerHTML = total;
+        document.getElementById("total").innerHTML = `Total: ${total}`;
     }
 
 }
