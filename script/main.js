@@ -134,7 +134,7 @@ class shoppingControl{
         this.shopList.forEach((product) => {
             total += product.Precio * product.Cantidad;
         })
-        document.getElementById("total").innerHTML = `Total: ${total}`;
+        document.getElementById("total").innerHTML = `Total: $${total}`;
     }
 
 }
