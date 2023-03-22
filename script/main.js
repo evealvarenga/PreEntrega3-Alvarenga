@@ -25,7 +25,7 @@ class productControl{
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Precio: $${producto.Precio}</li>
-                    <li class="list-group-item"><botton class="btn btn-outline-warning" id="product${producto.ID}">Comprar</botton></li>
+                    <li class="list-group-item"><center><botton class="btn btn-outline-warning" id="product${producto.ID}">Comprar</botton></center></li>
                 </ul>
             </div>
             ` 
@@ -66,7 +66,7 @@ class shoppingControl{
                         <div class="card-body">
                             <h5 class="card-title"> ${producto.Sabor}</h5>
                             <p class="card-text">Precio por unidad: $${producto.Precio}</p>
-                            <p class="card-text"><small class="text-muted"><botton class="btn btn-outline-warning">+</botton> <button type="button" class="btn btn-warning" disable>Total: ${producto.Cantidad}</button> <botton class="btn btn-outline-warning">-</botton></small></p>
+                            <p class="card-text"><small class="text-muted"><botton class="btn btn-outline-warning">-</botton> <button type="button" class="btn btn-warning" disable>Total: ${producto.Cantidad}</button> <botton class="btn btn-outline-warning">+</botton></small></p>
                         </div>
                     </div>
                 </div>
@@ -74,6 +74,20 @@ class shoppingControl{
             `
             
         })
+    }
+
+    cleaner(){
+        this.shopList.length = 0;
+        container_cart.innerHTML = ""
+        localStorage.clear();
+    }
+
+    total(){
+        let total = 0;
+        this.shopList.forEach((product) => {
+            total += product.Precio * product.Cantidad;
+        })
+        precioTotal.innerHTML = `Total: $${total}`;
     }
 
 }
@@ -84,6 +98,8 @@ productC.getList()
 shopC.getList()
 const main_container = document.getElementById("main_container")
 const container_cart = document.getElementById("container_cart")
+const cleanCart = document.getElementById("cleanCart");
+const precioTotal = document.querySelector(".total");
 productC.show(main_container)
 shopC.show(container_cart)
 
@@ -95,4 +111,8 @@ productC.productsList.forEach(product => {
         shopC.show(container_cart)
 
     })
+})
+
+cleanCart.addEventListener("click", () => {
+    shopC.cleaner()
 })
