@@ -76,11 +76,13 @@ class shoppingControl{
             const decreaseP = document.getElementById(producto.ID);
 
             increaseP.addEventListener("click",() => {
-                this.increase(producto.ID)
+                this.increase(producto.ID);
+                
             })
             decreaseP.addEventListener("click",() =>{
-                this.decrease(producto.ID)
+                this.decrease(producto.ID);
             })
+            this.total();
         })
     }
 
@@ -131,8 +133,8 @@ class shoppingControl{
         this.shopList.forEach((product) => {
             total += product.Precio * product.Cantidad;
         })
-        const precioTotal = document.getElementById("total");
-        precioTotal.innerHTML = total;
+        console.log(total)
+        document.getElementById("total").innerHTML = total;
     }
 
 }
