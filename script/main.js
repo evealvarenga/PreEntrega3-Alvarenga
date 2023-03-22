@@ -19,8 +19,7 @@ class productControl{
                 <img src="${producto.img}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.Sabor}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
+                    <p class="card-text">
                     </p>
                 </div>
                 <ul class="list-group list-group-flush">
