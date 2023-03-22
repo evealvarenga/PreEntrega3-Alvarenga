@@ -66,14 +66,57 @@ class shoppingControl{
                         <div class="card-body">
                             <h5 class="card-title"> ${producto.Sabor}</h5>
                             <p class="card-text">Precio por unidad: $${producto.Precio}</p>
-                            <p class="card-text"><small class="text-muted"><botton class="btn btn-outline-warning">-</botton> <button type="button" class="btn btn-warning" disable>Total: ${producto.Cantidad}</button> <botton class="btn btn-outline-warning">+</botton></small></p>
+                            <p class="card-text"><small class="text-muted"><botton class="btn btn-outline-warning" id="${producto.ID}">-</botton> <button type="button" class="btn btn-warning" id="cantidad" disable>${producto.Cantidad}</button> <botton class="btn btn-outline-warning" id="increase${producto.ID}">+</botton></small></p>
                         </div>
                     </div>
                 </div>
             </div>
             `
-            
+            const increaseP = document.getElementById(`increase${producto.ID}`);
+            const decreaseP = document.getElementById(producto.ID);
+
+            increaseP.addEventListener("click",() => {
+                this.increase(producto.ID)
+            })
+            decreaseP.addEventListener("click",() =>{
+                this.decrease(producto.ID)
+            })
         })
+    }
+
+    increase(ID){
+        const product = this.shopList.find ( product => product.ID === ID);
+        if(product){
+            const i = product.Cantidad++
+            const cantidad = document.getElementById("cantidad");
+            cantidad.innerHTML = i
+            localStorage.setItem("shopList", JSON.stringify(this.shopList))
+        }
+        this.show(container_cart)
+        return i
+    } 
+
+    decrease(ID){
+        const product = this.shopList.find (product => product.ID === ID);
+        if (product){
+            const i = product.Cantidad--
+            if(i <=1){
+                this.remove(ID);
+            } else{
+                const i = document.getElementById(".cantidad")
+                cantidad.innerHTML= i                
+                localStorage.setItem("shopList", JSON.stringify(this.shopList))
+            }
+        }
+        this.show(container_cart)
+    }
+
+    remove(ID){
+        const product = this.shopList.find (product => product.ID === ID);
+        const index = this.shopList.indexOf(product);
+        this.shopList.splice(index,1);
+        localStorage.setItem("shopList", JSON.stringify(this.shopList));
+        this.show(container_cart)
     }
 
     cleaner(){
@@ -83,11 +126,13 @@ class shoppingControl{
     }
 
     total(){
+        //No funciona
         let total = 0;
         this.shopList.forEach((product) => {
             total += product.Precio * product.Cantidad;
         })
-        precioTotal.innerHTML = `Total: $${total}`;
+        const precioTotal = document.getElementById("total");
+        precioTotal.innerHTML = total;
     }
 
 }
@@ -99,7 +144,7 @@ shopC.getList()
 const main_container = document.getElementById("main_container")
 const container_cart = document.getElementById("container_cart")
 const cleanCart = document.getElementById("cleanCart");
-const precioTotal = document.querySelector(".total");
+const precioTotal = document.querySelector("total");
 productC.show(main_container)
 shopC.show(container_cart)
 
